@@ -268,11 +268,11 @@ def call_ai(messages, system_prompt):
 # ─────────────────────────────────────────────
 def extract_pdf_text(uploaded_file):
     try:
-        reader = PyPDF2.PdfReader(io.BytesIO(uploaded_file.read()))
+        reader = pypdf.PdfReader(io.BytesIO(uploaded_file.read()))
         text = ""
         for page in reader.pages:
             text += page.extract_text() + "\n"
-        return text[:8000]  # limit to avoid token overflow
+        return text[:8000]
     except Exception as e:
         return f"Error reading PDF: {str(e)}"
 
