@@ -268,7 +268,7 @@ def call_ai(messages, system_prompt):
 # ─────────────────────────────────────────────
 def extract_pdf_text(uploaded_file):
     try:
-        reader = import pypdf.PdfReader(io.BytesIO(uploaded_file.read()))
+        reader = pypdf.PdfReader(io.BytesIO(uploaded_file.read()))
         text = ""
         for page in reader.pages:
             text += page.extract_text() + "\n"
